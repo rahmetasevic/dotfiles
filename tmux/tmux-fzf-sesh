@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+current_session="$(tmux display -p '#{session_name}')"
+selected_session="$(tmux list-sessions -F "#{session_name}" | fzf --reverse)" 
+
+# Check if the selected session is the same as the current one
+if [[ $? -eq 0 && "$selected_session" != "$current_session" ]]; then tmux switch-client -t "$selected_session"; fi

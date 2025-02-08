@@ -218,7 +218,7 @@ bar {
 # Display wallpaper
 # exec_always feh --bg-scale ~/Pictures/Wallpapers/cityscape_3.jpeg
 #exec --no-startup-id feh --randomize --bg-scale ~/Pictures/Wallpapers/*
-exec_always --no-startup-id feh --bg-fill ~/dotfiles/other/images$(ls -Rp ~/dotfiles/other/images | grep -v / | shuf -n 1)
+exec_always --no-startup-id feh --bg-fill ~/dotfiles/other/images/$(ls -Rp ~/dotfiles/other/images | grep -v / | shuf -n 1)
 
 # screenshoot tool
 bindsym --release Print exec flameshot gui
@@ -250,4 +250,3 @@ workspace $ws3 output HDMI-2
 #client.urgent            $peach    $base  $peach   $overlay0  $peach
 #client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0 
 #client.background        $base
-# comment

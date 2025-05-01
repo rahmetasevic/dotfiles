@@ -16,7 +16,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
-		build = ":TSUpdate",
+		build = function()
+			vim.cmd("silent! TSUpdate")
+		end,
 		config = function()
 			local treesitter = require("nvim-treesitter.configs")
 
@@ -28,6 +30,9 @@ return {
 				indent = { enable = true },
 				auto_install = true,
 				ensure_installed = {
+					"c",
+					"cpp",
+					"bash",
 					"lua",
 					"html",
 					"css",

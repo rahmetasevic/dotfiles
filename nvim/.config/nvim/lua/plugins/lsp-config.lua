@@ -30,6 +30,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					"clangd",
 					"lua_ls",
 					"ts_ls",
 					"html",
@@ -59,6 +60,24 @@ return {
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+			-- Enhanced clangd config
+			lspconfig.clangd.setup({
+				capabilities = capabilities,
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+					-- "--header-insertion=iwyu",
+					"--completion-style=detailed",
+					"--function-arg-placeholders",
+					"--fallback-style=llvm",
+				},
+				init_options = {
+					usePlaceholders = true,
+					completeUnimported = true,
+					clangdFileStatus = true,
+				},
+			})
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.ts_ls.setup({ capabilities = capabilities })
 			lspconfig.html.setup({ capabilities = capabilities })
@@ -72,7 +91,6 @@ return {
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, {})
 		end,
 	},

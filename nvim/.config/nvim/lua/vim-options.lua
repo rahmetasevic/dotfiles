@@ -37,8 +37,8 @@ vim.opt.smartcase = true
 -- vim.opt.colorcolumn = "80"
 
 -- Decrease update time
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 400
 
 vim.opt.winblend = 0
 vim.opt.pumblend = 0
